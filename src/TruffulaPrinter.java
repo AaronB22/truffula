@@ -113,12 +113,19 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
     File root= new File(".");
-    File[] rootChildren = root.listFiles();
+    // File[] rootChildren = root.listFiles();
     // System.out.println(rootChildren);
-    for(File child: rootChildren){
-      System.out.println(child);
-    }
+    printTree(root);
     out.println("printTree was called!");
     out.println("My options are: " + options);
+  }
+  private void printTree(File root){
+    if(root==null)return;
+    System.out.println(" "+root);
+    if(root.listFiles()==null) return;
+    File[] rootChildren = root.listFiles();
+    for (File child : rootChildren) {
+      printTree(child);
+    }
   }
 }
