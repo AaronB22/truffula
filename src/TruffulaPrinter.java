@@ -115,17 +115,21 @@ public class TruffulaPrinter {
     File root= new File(".");
     // File[] rootChildren = root.listFiles();
     // System.out.println(rootChildren);
-    printTree(root);
+    printTree(root, 0);
     out.println("printTree was called!");
     out.println("My options are: " + options);
   }
-  private void printTree(File root){
+  private void printTree(File root, int indent){
     if(root==null)return;
-    System.out.println(" "+root);
+    String indentation="";
+    for(int i=0; i<indent; i++){
+      indentation +=" ";
+    }
+    System.out.println(indentation+root);
     if(root.listFiles()==null) return;
     File[] rootChildren = root.listFiles();
     for (File child : rootChildren) {
-      printTree(child);
+      printTree(child, indent+1);
     }
   }
 }
