@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 
 /**
  * Represents configuration options for controlling how a directory tree is displayed.
@@ -101,10 +102,22 @@ public class TruffulaOptions  {
    * @throws FileNotFoundException if the directory cannot be found or if the path points to a file
    */
   public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException {
-    // TODO: Replace the below lines with your implementation
-    root = null;
-    showHidden = false;
-    useColor = false;
+
+    // root = null;
+    // showHidden = false;
+    // useColor = false;
+    // System.out.println(args);
+    boolean color=true;
+    boolean hiden=false;
+    
+    for(String arg:args){
+      if(arg.equals("-nc")) color=false;
+  
+      if(arg.equals("-h")) hiden=true;
+    }
+    root = new File(args[args.length - 1]);
+    showHidden=hiden;
+    useColor=color;
   }
 
   /**
