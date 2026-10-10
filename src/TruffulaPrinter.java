@@ -129,7 +129,7 @@ public class TruffulaPrinter {
     String slash = "";
     if(root.isDirectory()) slash="/";
 
-  
+    out.setCurrentColor(colorSequence.get((indent/3)%colorSequence.size()));
     out.println(indentation+root.getName()+slash);
 
     if(root.listFiles()==null) return;
