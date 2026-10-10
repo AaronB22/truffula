@@ -135,7 +135,7 @@ public class TruffulaPrinter {
     out.println(indentation+root.getName()+slash);
 
     if(root.listFiles()==null) return;
-    File[] rootChildren = root.listFiles();
+    File[] rootChildren =AlphabeticalFileSorter.sort(root.listFiles());
     for (File child : rootChildren) {
       if(child.isHidden()&&!options.isShowHidden())continue;
       printTree(child, indent+3);
