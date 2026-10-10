@@ -112,11 +112,11 @@ public class TruffulaPrinter {
     // - For Wave 6: Use AlphabeticalFileSorter
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
-    File root= new File(".");
+    // File root= new File(".");
+    File root= options.getRoot();
     // File[] rootChildren = root.listFiles();
     // System.out.println(rootChildren);
     printTree(root, 0);
-    out.println("printTree was called!");
     out.println("My options are: " + options);
   }
   private void printTree(File root, int indent){
@@ -125,7 +125,9 @@ public class TruffulaPrinter {
     for(int i=0; i<indent; i++){
       indentation +=" ";
     }
-    System.out.println(indentation+root);
+    String slash = "";
+    if(root.isDirectory()) slash="/";
+    out.println(indentation+root.getName()+slash);
     if(root.listFiles()==null) return;
     File[] rootChildren = root.listFiles();
     for (File child : rootChildren) {
